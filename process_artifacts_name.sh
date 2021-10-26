@@ -31,5 +31,5 @@ do
  # sed -i 's/"//g' artifact$project$repositorylist.txt
  # cat artifactname$project$repository.json | jq
  # cat artifact$project$repositorylist.txt
- $count=$count+1;
+ count+=1;
 done < $1;
