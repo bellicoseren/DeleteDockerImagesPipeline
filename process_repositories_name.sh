@@ -12,4 +12,7 @@ do
  sed -i 's/"//g' artifact$project$repositorylist.txt
  cat artifactname$project$repository.json | jq
  cat artifact$project$repositorylist.txt
+ ./process_artifacts_name.sh artifact$project$repositorylist.txt
 done < $1;
+
+
