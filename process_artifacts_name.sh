@@ -2,9 +2,8 @@
 
  count=0;
  temp=$2
- #temp=$((var1 / 2))
- temp/=2
- echo "La mitad del total de lineas en el archivo: $temp"
+ half_temp=$((temp / 2))
+ echo "La mitad del total de lineas en el archivo: $half_temp"
 
 while read line 
 do
