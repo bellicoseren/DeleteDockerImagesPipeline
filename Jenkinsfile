@@ -26,7 +26,7 @@ pipeline {
       steps {
         sh """chmod 777 process_project_names.sh"""
         sh """./process_project_names.sh"""
-        
+        sh """ls -larth"""
       }
     } 
     stage('Get Project by ID Theme') {
