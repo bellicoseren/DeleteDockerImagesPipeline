@@ -9,7 +9,8 @@ while read line
 do
 
  echo "+++ Checking artifacts $line +++";
- if [[ count==0 ]] then
+ if [[ count==0 ]] 
+ then
    url=$(echo $line | cut -d / -f 5,7;)
    project=$(echo $url | cut -d / -f 1;)
    repository=$(echo $url | cut -d / -f 2;)
