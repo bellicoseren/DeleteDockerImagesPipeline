@@ -8,7 +8,7 @@ pipeline {
     
     stage('Clean Up Table') {
       steps {
-        sh """mysql -h 172.17.0.3 -u root -prenehr -e "truncate table jenkins.harbor""""
+        sh """mysql -h 172.17.0.3 -u root -prenehr -e 'truncate table jenkins.harbor'"""
       }
     } 
     stage('Project list') {
