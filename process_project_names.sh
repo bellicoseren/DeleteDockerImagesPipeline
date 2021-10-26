@@ -9,4 +9,5 @@ do
  sed -i 's/"//g' repository$linelist.txt
  cat repositoriesnames$line.json
  cat repository$linelist.txt
+ ./process_repositories_name.sh repository$linelist.txt
 done < projectlist.txt;
