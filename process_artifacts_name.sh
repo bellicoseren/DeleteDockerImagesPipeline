@@ -1,9 +1,10 @@
 #!/bin/bash
 
  count=0;
-
-
-
+ temp=$2
+ #temp=$((var1 / 2))
+ temp/=2
+ echo "La mitad del total de lineas en el archivo: $temp"
 
 while read line 
 do
@@ -32,4 +33,5 @@ do
  # cat artifactname$project$repository.json | jq
  # cat artifact$project$repositorylist.txt
  count+=1;
+ 
 done < $1;
