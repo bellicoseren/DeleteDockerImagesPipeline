@@ -21,14 +21,14 @@ do
    # curl -X GET "http://localhost/api/v2.0/projects/cicd/repositories/jenkins/artifacts/1.0?page=1&page_size=10&with_tag=true&with_label=false&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H "accept: application/json" -H "X-Accept-Vulnerabilities: application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0" -H "authorization: Basic YWRtaW46SGFyYm9yMTIzNDU="
    # curl -X GET "http://localhost/api/v2.0/projects/test/repositories/vault/artifacts?page=1&page_size=10&with_tag=true&with_label=true&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H "accept: application/json" -H "X-Accept-Vulnerabilities: application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0" -H "authorization: Basic YWRtaW46SGFyYm9yMTIzNDU="
    # /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}
-   checklabels="$(cat tag$project$repository$tag.json | jq '.labels[].name')"
+   checklabels="$(cat tag$project$repository$tag.json | jq 2>/dev/null'.labels[].name')"
    if [[ -z $checklabels ]]
    then
      echo "La imagen $project/$repository:$tag no cuenta con etiquetas"
    else 
      echo "La imagen $project/$repository:$tag cuenta con etiquetas"
    fi
-   cat tag$project$repository$tag.json | jq '.labels[].name' > tag$project$repository$tag.txt
+   cat tag$project$repository$tag.json | jq '.labels[].name 2>/dev/null' > tag$project$repository$tag.txt
    sed -i 's/"//g' tag$project$repository$tag.txt
    cat tag$project$repository$tag.json | jq
    echo "+++ Lista de labels de la imagen $project/$repository:$tag +++"
