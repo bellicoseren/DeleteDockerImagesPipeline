@@ -9,6 +9,6 @@ do
  # /projects/{project_name}/repositories/{repository_name}/artifacts
  cat artifactname$project_$repository.json | jq '.[].name' > artifact$project_$repositorylist.txt
  sed -i 's/"//g' artifactname$project_$repository.json
- cat artifactname$project_$repository.json
+ cat artifactname$project_$repository.json | jq
  cat artifact$project_$repositorylist.txt
 done < $1;
