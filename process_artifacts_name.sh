@@ -9,7 +9,7 @@ while read line
 do
 
  echo "+++ Checking artifacts $line +++";
- if [[ count==0 ]] 
+ if [[ $count==0 ]] 
  then
    url=$(echo $line | cut -d / -f 5,7;)
    project=$(echo $url | cut -d / -f 1;)
@@ -31,5 +31,5 @@ do
  # sed -i 's/"//g' artifact$project$repositorylist.txt
  # cat artifactname$project$repository.json | jq
  # cat artifact$project$repositorylist.txt
- count=count+1;
+ $count=$count+1;
 done < $1;
