@@ -21,6 +21,13 @@ pipeline {
         sh """cat projectname.json | jq '.[].name' > projectlist.txt"""
       }
     }
+    stage('Get Repositories from project') {
+      steps {
+        sh """chmod 777 process_project_names.sh"""
+        sh """./process_project_names.sh"""
+        
+      }
+    } 
     stage('Get Project by ID Theme') {
       steps {
         sh """curl -u admin:Harbor12345 -i -k -X GET 'http://172.18.0.1/api/v2.0/projects/test/repositories/my_theme'"""
@@ -30,6 +37,7 @@ pipeline {
         //sh """curl -X GET "http://172.18.0.1/api/v2.0/projects/test/repositories/docker-maven-sample/artifacts?page=1&page_size=10&with_tag=true&with_label=false&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H 'accept: application/json'"""
       }
     }
+    
     stage('Get Project by ID Vault') {
       steps {
         sh """curl -u admin:Harbor12345 -i -k -X GET 'http://172.18.0.1/api/v2.0/projects/test/repositories/vault'"""
