@@ -5,12 +5,6 @@ pipeline {
   }
   agent any
   stages {
-    stage('JQ') {
-      steps {
-        sh"""jq """
-        
-      }
-    }      
       
     stage('Project list') {
       steps {
