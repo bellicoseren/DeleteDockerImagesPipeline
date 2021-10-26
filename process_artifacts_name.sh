@@ -24,16 +24,11 @@ do
    cat tag$project$repository$tag.json | jq '.labels[].name' > tag$project$repository$tag.txt
    sed -i 's/"//g' tag$project$repository$tag.txt
    cat tag$project$repository$tag.json | jq
+   echo "+++ Lista de labels de la imagen $tag +++"
    cat tag$project$repository$tag.txt
+   echo "+++ Fin de la lista de labels +++"
  fi
- 
- # url=$(echo $line | cut -d / -f 5,7;)
- # project=$(echo $url | cut -d / -f 1;)
- # repository=$(echo $url | cut -d / -f 2;)
- # tag=$(echo $line | cut -d / -f 3;)
- 
- 
- 
+  
  count+=1;
  
 done < $1;
