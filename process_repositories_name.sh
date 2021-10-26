@@ -11,8 +11,10 @@ do
  # cat artifactname$project$repository.json | jq '.[].tags[].name' > artifact$project$repositorylist.txt
  cat artifactname$project$repository.json | jq '.[].addition_links.build_history.href, .[].tags[].name' > artifact$project$repositorylist.txt
  sed -i 's/"//g' artifact$project$repositorylist.txt
- cat artifactname$project$repository.json | jq
+ # cat artifactname$project$repository.json | jq
+ echo "+++ Lista de artefactos +++"
  cat artifact$project$repositorylist.txt
+ echo "+++ Fin de lista de artefactos +++"
  num_lines="$(cat artifact$project$repositorylist.txt | wc -l)"
  echo "File size: $num_lines"
  ./process_artifacts_name.sh artifact$project$repositorylist.txt $num_lines
