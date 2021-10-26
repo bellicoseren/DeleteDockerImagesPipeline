@@ -28,7 +28,7 @@ do
    else 
      echo "La imagen $project/$repository:$tag cuenta con etiquetas"
      mysql -h 172.17.0.3 -u root -prenehr -e "insert into jenkins.harbor values('$project', '$repository', '$tag', '', '')"
-     mysql -h 172.17.0.3 -u root -prenehr -e "select *from jenkins.harbor"
+     
    fi
    cat tag$project$repository$tag.json | jq '.labels[].name' 2>/dev/null > tag$project$repository$tag.txt
    sed -i 's/"//g' tag$project$repository$tag.txt
@@ -39,5 +39,6 @@ do
  fi
   
  count+=1;
- 
 done < $1;
+
+mysql -h 172.17.0.3 -u root -prenehr -e "select *from jenkins.harbor"
