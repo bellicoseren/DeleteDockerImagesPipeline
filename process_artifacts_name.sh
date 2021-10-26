@@ -4,7 +4,7 @@
  temp=$2
  half_temp=$((temp / 2))
  echo "La mitad del total de lineas en el archivo: $half_temp"
- mysql -h 172.17.0.3 -u root -prenehr -e "truncate table jenkins.harbor"
+ 
  
  
 while read line 
