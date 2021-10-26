@@ -13,7 +13,9 @@ do
  sed -i 's/"//g' artifact$project$repositorylist.txt
  cat artifactname$project$repository.json | jq
  cat artifact$project$repositorylist.txt
- ./process_artifacts_name.sh artifact$project$repositorylist.txt
+ num_lines="$(cat artifact$project$repositorylist.txt | wc -l)"
+ echo "File size: $num_lines"
+ ./process_artifacts_name.sh artifact$project$repositorylist.txt $num_lines
 done < $1;
 
 
