@@ -24,7 +24,7 @@ do
    cat tag$project$repository$tag.json | jq '.labels[].name' > tag$project$repository$tag.txt
    sed -i 's/"//g' tag$project$repository$tag.txt
    cat tag$project$repository$tag.json | jq
-   echo "+++ Lista de labels de la imagen $tag +++"
+   echo "+++ Lista de labels de la imagen $project/$repository:$tag +++"
    cat tag$project$repository$tag.txt
    echo "+++ Fin de la lista de labels +++"
  fi
