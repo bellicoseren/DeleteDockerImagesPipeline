@@ -29,8 +29,8 @@ do
      echo "La imagen $project/$repository:$tag no cuenta con etiquetas"
    else 
      echo "La imagen $project/$repository:$tag cuenta con etiquetas"
-     ramalabel="$(cat tag$project$repository$tag.json | jq '.labels | map(select(.color == "#1D5100" ))' | jq '.[].name' 2>/dev/null)"    
-     fechalabel="$(cat tag$project$repository$tag.json | jq '.labels | map(select(.color == "#C92100" ))' | jq '.[].name' 2>/dev/null)"    
+     ramalabel="$(cat tag$project$repository$tag.json | jq '.labels | map(select(.color == "#1D5100" ))' | jq '.[].name' | sed -i 's/"//g' 2>/dev/null)"    
+     fechalabel="$(cat tag$project$repository$tag.json | jq '.labels | map(select(.color == "#C92100" ))' | jq '.[].name' | sed -i 's/"//g' 2>/dev/null)"    
      mysql -h 172.17.0.3 -u root -prenehr -e "insert into jenkins.harbor values('$project', '$repository', '$tag', '$fechalabel', '$ramalabel')"
      
    fi
