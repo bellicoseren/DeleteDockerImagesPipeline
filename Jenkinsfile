@@ -5,7 +5,12 @@ pipeline {
   }
   agent any
   stages {
-      
+    
+    stage('Clean Up Table') {
+      steps {
+        sh """mysql -h 172.17.0.3 -u root -prenehr -e "truncate table jenkins.harbor""""
+      }
+    } 
     stage('Project list') {
       steps {
         //sh """curl -X GET "http://172.18.0.1/api/v2.0/projects?page=1&page_size=10&with_detail=true" -H 'accept: application/json'"""
