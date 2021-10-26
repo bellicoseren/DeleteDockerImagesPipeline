@@ -19,6 +19,7 @@ pipeline {
         //sh """curl -u admin:Harbor12345 -i -k -X GET 'http://172.18.0.1/api/v2.0/projects/' > REPOS.json"""
         sh """curl -u admin:Harbor12345 -sS -X GET "http://172.18.0.1/api/v2.0/projects/" -o projectname.json"""
         sh """cat projectname.json | jq '.[].name' > projectlist.txt"""
+        sh """sed /"// projectlist.txt """
       }
     }
     stage('Get Repositories from project') {
