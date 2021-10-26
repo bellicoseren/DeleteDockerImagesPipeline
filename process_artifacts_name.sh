@@ -21,7 +21,7 @@ do
    # curl -X GET "http://localhost/api/v2.0/projects/cicd/repositories/jenkins/artifacts/1.0?page=1&page_size=10&with_tag=true&with_label=false&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H "accept: application/json" -H "X-Accept-Vulnerabilities: application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0" -H "authorization: Basic YWRtaW46SGFyYm9yMTIzNDU="
    # curl -X GET "http://localhost/api/v2.0/projects/test/repositories/vault/artifacts?page=1&page_size=10&with_tag=true&with_label=true&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H "accept: application/json" -H "X-Accept-Vulnerabilities: application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0" -H "authorization: Basic YWRtaW46SGFyYm9yMTIzNDU="
    # /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}
-   cat tag$project$repository$tag.json | jq '.[].tags[].name' > tag$project$repository$tag.txt
+   cat tag$project$repository$tag.json | jq '.[].tags[].labels' > tag$project$repository$tag.txt
    sed -i 's/"//g' tag$project$repository$tag.txt
    cat tag$project$repository$tag.json | jq
    cat tag$project$repository$tag.txt
