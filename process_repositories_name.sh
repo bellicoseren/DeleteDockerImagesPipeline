@@ -2,7 +2,7 @@
 
 while read line 
 do
- echo $line ----------;
+ echo "+++ Checking repositories $line +++";
  project=$(echo $line | cut -d / -f 1;)
  repository=$(echo $line | cut -d / -f 2;)
  curl -H "authorization: Basic YWRtaW46SGFyYm9yMTIzNDU=" -sS -X GET "http://172.18.0.1/api/v2.0/projects/$project/repositories/$repository/artifacts?page=1&page_size=10&with_tag=true&with_label=true&with_scan_overview=false&with_signature=false&with_immutable_status=false" -H "accept: application/json" -o artifactname$project$repository.json
