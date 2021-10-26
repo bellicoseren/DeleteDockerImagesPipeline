@@ -17,7 +17,7 @@ pipeline {
         //sh """curl -X GET "http://172.18.0.1/api/v2.0/projects?page=1&page_size=10&with_detail=true" -H 'accept: application/json'"""
         sh """curl -u admin:Harbor12345 -i -k -X GET 'http://172.18.0.1/api/v2.0/projects/'"""
         //sh """curl -u admin:Harbor12345 -i -k -X GET 'http://172.18.0.1/api/v2.0/projects/' > REPOS.json"""
-        sh """curl -u admin:Harbor12345 -sS -X GET "http://172.18.0.1/api/v2.0/projects/"-o projectname.json"""
+        sh """curl -u admin:Harbor12345 -sS -X GET "http://172.18.0.1/api/v2.0/projects/" -o projectname.json"""
         sh """cat projectname.json | jq '.[].name' > projectlist.txt"""
       }
     }
