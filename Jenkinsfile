@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Get Repositories from project') {
       steps {
-        sh """chmod 777 process_project_names.sh"""
+        sh """chmod 777 process_project_names.sh process_repositories_name.sh"""
         sh """./process_project_names.sh"""
         sh """ls -larth"""
       }
