@@ -9,7 +9,7 @@ while read line
 do
 
  echo "+++ Checking artifacts $line +++";
- if [[ $count==0 ]] 
+ if [[ $count -lt $half_temp ]] 
  then
    url=$(echo $line | cut -d / -f 5,7;)
    project=$(echo $url | cut -d / -f 1;)
